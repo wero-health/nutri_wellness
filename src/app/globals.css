@@ -1,26 +1,267 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Nutri Wellness Luxury International Color System */
+  --color-primary: #176B60;          /* Deep Teal */
+  --color-primary-light: #1E8477;
+  --color-primary-dark: #0F4C43;
+  --color-primary-soft: #E6F2F0;
+
+  --color-secondary: #B9D8B1;        /* Sage Green */
+  --color-secondary-light: #D8ECD2;
+  --color-secondary-dark: #47703E;
+  --color-secondary-soft: #F2F8F0;
+
+  --color-accent: #E8B77B;           /* Soft Gold */
+  --color-accent-light: #F4D4AA;
+  --color-accent-dark: #C99452;
+  --color-accent-soft: #FDF6EC;
+
+  --color-background: #F8F6F0;       /* Warm Ivory (Main Background) */
+  --color-surface: #FFFFFF;          /* Pure White (Card Background) */
+  --color-surface-mint: #EFF6F0;     /* Light Mint (Supporting Background) */
+  
+  --color-heading: #233B36;          /* Dark Charcoal */
+  --color-body: #38524C;             /* High-Contrast Readable Charcoal */
+  --color-muted: #57756E;            /* Refined Muted Charcoal */
+  --color-border: #E2E9E1;           /* Warm Soft Border */
+  --color-success: #2E8540;
+  --color-warning: #E8B77B;
+  --color-error: #D94638;
+
+  /* Explicit Palette Aliases */
+  --color-deep-teal: #176B60;
+  --color-sage-green: #B9D8B1;
+  --color-warm-ivory: #F8F6F0;
+  --color-soft-gold: #E8B77B;
+  --color-dark-charcoal: #233B36;
+  --color-light-mint: #EFF6F0;
+
+  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-slide-up: slide-up 0.6s ease-out forwards;
+  --animate-slide-down: slide-down 0.4s ease-out forwards;
+  --animate-scale-in: scale-in 0.3s ease-out forwards;
+  --animate-marquee: marquee 35s linear infinite;
+  --animate-float: float-gentle 6s ease-in-out infinite;
+  --animate-float-delayed: float-gentle 7s ease-in-out 2s infinite;
+  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+  --animate-aurora: aurora 18s ease infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0%);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes float-gentle {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.04);
+    }
+  }
+
+  @keyframes aurora {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+      transform: rotate(180deg) scale(1.15);
+    }
+
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base styles */
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  color: var(--color-body);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Selection color */
+::selection {
+  background-color: #B9D8B1;
+  color: #233B36;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F6F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #B9D8B1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #176B60;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #176B60;
+  outline-offset: 2px;
+}
+
+/* Utility classes */
+.text-gradient {
+  background: linear-gradient(135deg, #176B60 0%, #1E8477 50%, #47703E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-teal-sage {
+  background: linear-gradient(135deg, #176B60 0%, #358B7E 50%, #B9D8B1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #C99452 0%, #E8B77B 50%, #F4D4AA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-dark {
+  background: rgba(23, 43, 39, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
 }
