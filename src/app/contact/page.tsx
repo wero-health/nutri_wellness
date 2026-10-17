@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   MapPin,
   Phone,
@@ -155,6 +156,27 @@ export default function ContactPage() {
                     <p className="text-xs text-[#57756E] mt-1 font-medium">
                       Consultations strictly by prior appointment
                     </p>
+                  </div>
+                </div>
+
+                {/* Clinic Sanctuary Photo Card */}
+                <div className="relative h-56 rounded-3xl overflow-hidden border border-[#E2E9E1] shadow-md group">
+                  <Image
+                    src="/images/clinic-sanctuary-clean.jpg"
+                    alt="Nutri Wellness Clinic Consultation Sanctuary, Jubilee Hills"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 460px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#132622]/85 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-white/95 text-[#176B60] shadow-xs border border-[#B9D8B1]/50">
+                      Consultation Sanctuary
+                    </span>
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4 text-white text-xs flex items-center justify-between font-medium">
+                    <span>Nutri Wellness Clinic</span>
+                    <span className="text-[#E8B77B] font-semibold">Jubilee Hills, Hyderabad</span>
                   </div>
                 </div>
               </div>

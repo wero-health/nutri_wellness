@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -59,12 +60,23 @@ export default function BlogListingPage() {
                 Featured Guide
               </span>
               <div className="bg-white rounded-3xl overflow-hidden border border-[#E2E9E1] shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div className="lg:col-span-5 h-64 lg:h-full min-h-[280px] bg-gradient-to-br from-[#132622] via-[#176B60] to-[#162E29] relative p-8 flex flex-col justify-between">
-                  <span className="inline-block px-3.5 py-1 rounded-full bg-white text-[#176B60] text-xs font-bold shadow-2xs w-fit border border-[#E2E9E1]">
-                    {featuredPost.category}
-                  </span>
-                  <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md text-[#E8B77B] border border-white/20 flex items-center justify-center">
-                    <BookOpen className="w-8 h-8" />
+                <div className="lg:col-span-5 h-64 lg:h-full min-h-[280px] relative overflow-hidden group">
+                  <Image
+                    src={featuredPost.image}
+                    alt={featuredPost.title}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 480px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#132622]/85 via-[#132622]/30 to-transparent" />
+                  <div className="absolute top-6 left-6 z-10">
+                    <span className="inline-block px-3.5 py-1 rounded-full bg-white/95 text-[#176B60] text-xs font-bold shadow-2xs border border-[#E2E9E1]">
+                      {featuredPost.category}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-6 left-6 right-6 text-white text-xs font-semibold z-10">
+                    <span className="text-[#E8B77B]">Featured Guide</span> • Dr. Anusha Dasari
                   </div>
                 </div>
 
@@ -169,8 +181,16 @@ export default function BlogListingPage() {
                     exit={{ opacity: 0, scale: 0.95 }}
                     className="bg-white rounded-3xl overflow-hidden border border-[#E2E9E1] hover:border-primary/40 transition-all duration-300 hover:shadow-xl flex flex-col group"
                   >
-                    <div className="h-44 bg-gradient-to-br from-[#132622] via-[#176B60] to-[#162E29] relative p-6 flex flex-col justify-between">
-                      <div className="flex items-center justify-between">
+                    <div className="h-52 relative overflow-hidden">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 380px"
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#132622]/85 via-[#132622]/20 to-transparent" />
+                      <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
                         <span className="text-xs font-bold px-3 py-1 rounded-full bg-white/95 text-primary shadow-2xs border border-[#E2E9E1]">
                           {post.category}
                         </span>
@@ -178,10 +198,6 @@ export default function BlogListingPage() {
                           <Clock className="w-3 h-3 text-[#E8B77B]" />
                           {post.readTime}
                         </span>
-                      </div>
-
-                      <div className="w-10 h-10 rounded-2xl bg-white/10 text-[#E8B77B] border border-white/20 flex items-center justify-center">
-                        <BookOpen className="w-5 h-5" />
                       </div>
                     </div>
 

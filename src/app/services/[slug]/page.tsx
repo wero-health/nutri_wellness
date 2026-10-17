@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Microscope,
   Dna,
@@ -80,6 +81,37 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Main Content Column */}
             <div className="lg:col-span-8 bg-white rounded-3xl p-8 sm:p-12 border border-[#E2E9E1] shadow-lg shadow-black/[0.02]">
+              {/* Featured Visual Hero Banner */}
+              <div className="relative h-64 sm:h-80 -mt-2 -mx-2 sm:-mt-4 sm:-mx-4 mb-10 rounded-2xl overflow-hidden border border-[#E2E9E1] shadow-md group">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                  className="object-cover group-hover:scale-102 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#132622]/90 via-[#132622]/30 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 text-white flex items-end justify-between gap-4">
+                  <div>
+                    <span className="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-bold mb-2 border border-white/25">
+                      Clinical Specialization
+                    </span>
+                    <h1 className="text-2xl sm:text-3xl font-heading font-bold text-white drop-shadow-md">
+                      {service.title} Program
+                    </h1>
+                  </div>
+                  <div className="hidden sm:block text-right">
+                    <span className="text-xs text-[#E8B77B] font-semibold block">
+                      Led by Dr. Anusha Dasari
+                    </span>
+                    <span className="text-[11px] text-[#F8F6F0]/80">
+                      IFM Certified Practitioner
+                    </span>
+                  </div>
+                </div>
+              </div>
+
               {/* Overview */}
               <div className="mb-12">
                 <div className="w-16 h-16 rounded-2xl bg-[#EFF6F0] text-[#176B60] border border-[#B9D8B1]/60 flex items-center justify-center mb-6 shadow-sm">
@@ -218,14 +250,30 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 <h4 className="text-sm font-heading font-bold text-[#233B36] uppercase tracking-wider mb-4">
                   Other Clinical Programs
                 </h4>
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {otherServices.map((other) => (
                     <Link
                       key={other.slug}
                       href={`/services/${other.slug}`}
-                      className="block p-3 rounded-xl hover:bg-[#EFF6F0] transition-colors text-sm font-medium text-[#38524C] hover:text-[#176B60]"
+                      className="flex items-center gap-3 p-2.5 rounded-2xl hover:bg-[#EFF6F0] transition-colors border border-transparent hover:border-[#E2E9E1] group"
                     >
-                      {other.title} →
+                      <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border border-[#E2E9E1] bg-white">
+                        <Image
+                          src={other.image}
+                          alt={other.title}
+                          fill
+                          sizes="48px"
+                          className="object-cover group-hover:scale-105 transition-transform"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-bold text-[#233B36] group-hover:text-primary transition-colors truncate">
+                          {other.title}
+                        </p>
+                        <p className="text-[11px] text-[#57756E] truncate">
+                          {other.shortDescription}
+                        </p>
+                      </div>
                     </Link>
                   ))}
                 </div>

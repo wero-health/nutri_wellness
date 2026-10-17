@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Microscope,
@@ -100,21 +101,41 @@ export function ServicesSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="bg-white rounded-3xl p-8 sm:p-10 border border-border shadow-xl shadow-primary/[0.03] relative overflow-hidden"
+                className="bg-white rounded-3xl p-6 sm:p-8 border border-border shadow-xl shadow-primary/[0.03] relative overflow-hidden"
               >
                 {/* Background watermarked accent */}
                 <div className="absolute -top-12 -right-12 w-48 h-48 bg-secondary/60 rounded-full blur-2xl pointer-events-none" />
 
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+                {/* Service Visual Banner */}
+                <div className="relative h-48 sm:h-56 rounded-2xl overflow-hidden mb-6 border border-border shadow-xs group">
+                  <Image
+                    src={activeService.image}
+                    alt={activeService.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 640px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#132622]/85 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-white/95 text-[#176B60] shadow-xs">
+                      {activeService.title}
+                    </span>
+                    <span className="text-xs font-semibold text-[#E8B77B] bg-black/40 backdrop-blur-md px-3 py-1 rounded-full">
+                      Personalized Protocol
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center text-primary">
-                      <ActiveIcon className="w-7 h-7" />
+                    <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-primary">
+                      <ActiveIcon className="w-6 h-6" />
                     </div>
                     <div>
                       <span className="text-xs font-semibold tracking-wider text-primary uppercase">
                         Clinical Pillar
                       </span>
-                      <h4 className="text-2xl sm:text-3xl font-heading font-bold text-heading">
+                      <h4 className="text-xl sm:text-2xl font-heading font-bold text-heading">
                         {activeService.title}
                       </h4>
                     </div>
@@ -129,7 +150,7 @@ export function ServicesSection() {
                   </Link>
                 </div>
 
-                <p className="text-body text-base leading-relaxed mb-8">
+                <p className="text-body text-sm leading-relaxed mb-6 font-medium">
                   {activeService.description}
                 </p>
 

@@ -266,12 +266,12 @@ export function HeroSection() {
 
               {/* IFM Certified Practitioner Badge */}
               <div className="self-end sm:self-center shrink-0">
-                <div className="bg-white rounded-xl p-2 border border-border/80 shadow-2xs flex items-center justify-center">
+                <div className="bg-white rounded-2xl p-1.5 border border-border/80 shadow-2xs flex items-center justify-center">
                   <Image
                     src="/images/ifm-certified-badge.png"
                     alt="The Institute for Functional Medicine Certified Practitioner"
-                    width={85}
-                    height={55}
+                    width={72}
+                    height={72}
                     className="object-contain"
                   />
                 </div>
