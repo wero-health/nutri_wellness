@@ -3,6 +3,7 @@ export interface Service {
   title: string;
   shortDescription: string;
   description: string;
+  image: string;
   icon: string;
   benefits: string[];
   whoIsItFor: string[];
@@ -18,6 +19,7 @@ export const services: Service[] = [
       "A personalized, patient-centered approach that addresses the root causes of disease rather than just treating symptoms.",
     description:
       "Functional Medicine is a systems biology-based approach that focuses on identifying and addressing the root cause of disease. Each symptom or differential diagnosis may be one of many contributing factors to an individual's illness. Dr. Anusha Dasari uses this approach to understand the origins, prevention, and treatment of complex, chronic diseases.",
+    image: "/images/functional-medicine-consult.jpg",
     icon: "Microscope",
     benefits: [
       "Root cause identification",
@@ -59,6 +61,7 @@ export const services: Service[] = [
       "Tailored medical treatment based on your unique genetic makeup, lifestyle, and environment for optimal health outcomes.",
     description:
       "Precision Medicine takes into account individual differences in patients' genes, environments, and lifestyles. Dr. Dasari leverages cutting-edge genomic insights and personalized diagnostics to create treatment plans that are uniquely suited to each patient.",
+    image: "/images/genomics-precision.jpg",
     icon: "Dna",
     benefits: [
       "Genetically-informed treatment",
@@ -100,6 +103,7 @@ export const services: Service[] = [
       "Evidence-based nutritional guidance to support your health goals, manage conditions, and optimize overall well-being.",
     description:
       "Our Nutrition & Wellness program provides personalized dietary plans and lifestyle recommendations based on scientific evidence. Dr. Dasari combines her medical expertise with nutritional science to create comprehensive wellness strategies.",
+    image: "/images/cellular-nutrition.jpg",
     icon: "Apple",
     benefits: [
       "Customized dietary plans",
@@ -136,6 +140,7 @@ export const services: Service[] = [
       "Comprehensive gut health assessment and treatment to restore microbiome balance and improve digestive wellness.",
     description:
       "The gut microbiome plays a crucial role in overall health. Our gut health program focuses on understanding and optimizing your digestive health through advanced testing, dietary interventions, and targeted treatments.",
+    image: "/images/microbiome-science.jpg",
     icon: "HeartPulse",
     benefits: [
       "Microbiome analysis",

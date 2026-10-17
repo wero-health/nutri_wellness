@@ -257,17 +257,17 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#F8F6F0] rounded-3xl p-8 sm:p-12 border border-[#E2E9E1] shadow-md grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            <div className="lg:col-span-4 relative h-64 rounded-2xl overflow-hidden shadow-sm border border-[#E2E9E1]">
+            <div className="lg:col-span-4 relative h-64 rounded-2xl overflow-hidden shadow-sm border border-[#E2E9E1] group">
               <Image
-                src="/images/dr-dasari-anusha.png"
-                alt="Dr. Dasari Anusha - Nutri Wellness Clinic, Jubilee Hills, Hyderabad"
+                src="/images/clinic-sanctuary-clean.jpg"
+                alt="Nutri Wellness Clinic Sanctuary - Jubilee Hills, Hyderabad"
                 fill
                 sizes="(max-width: 1024px) 100vw, 360px"
-                className="object-cover object-top"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#132622]/80 via-transparent to-transparent" />
               <div className="absolute bottom-3 left-3 text-white text-xs font-semibold">
-                Dr. Dasari Anusha • Jubilee Hills
+                Nutri Wellness Sanctuary • Jubilee Hills
               </div>
             </div>
 

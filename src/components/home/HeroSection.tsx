@@ -264,16 +264,31 @@ export function HeroSection() {
                 </div>
               </div>
 
-              {/* IFM Certified Practitioner Badge */}
-              <div className="self-end sm:self-center shrink-0">
-                <div className="bg-white rounded-xl p-2 border border-border/80 shadow-2xs flex items-center justify-center">
-                  <Image
-                    src="/images/ifm-certified-badge.png"
-                    alt="The Institute for Functional Medicine Certified Practitioner"
-                    width={85}
-                    height={55}
-                    className="object-contain"
-                  />
+              {/* Official IFM Certified Practitioner Seal */}
+              <div className="self-start sm:self-center shrink-0">
+                <div className="flex items-center gap-3 bg-white py-2 px-3.5 rounded-2xl border border-border/80 shadow-2xs">
+                  <div className="relative w-12 h-12 shrink-0">
+                    <Image
+                      src="/images/ifm-certified-practitioner-seal.png"
+                      alt="The Institute for Functional Medicine Certified Practitioner Seal"
+                      width={48}
+                      height={48}
+                      unoptimized
+                      priority
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="text-left">
+                    <span className="text-[10px] font-bold text-primary uppercase tracking-wider block">
+                      Accredited By
+                    </span>
+                    <span className="text-xs font-heading font-bold text-heading block">
+                      IFM Certified (IFMCP)
+                    </span>
+                    <span className="text-[10px] text-muted block">
+                      Functional Medicine, USA
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Clock,
   ArrowLeft,
@@ -66,6 +67,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <article className="section-padding bg-[#F8F6F0] relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#E2E9E1] shadow-xl">
+            {/* Featured Article Visual Banner */}
+            <div className="relative h-64 sm:h-96 -mt-2 -mx-2 sm:-mt-4 sm:-mx-4 mb-8 rounded-2xl overflow-hidden border border-[#E2E9E1] shadow-md group">
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 840px"
+                className="object-cover group-hover:scale-102 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#132622]/85 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-6 right-6 text-white flex items-center justify-between text-xs font-medium">
+                <span className="text-[#E8B77B] font-semibold">Nutri Wellness Medical Library</span>
+                <span className="bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+                  Evidence-Based Research
+                </span>
+              </div>
+            </div>
+
             {/* Article Meta Bar */}
             <div className="flex flex-wrap items-center justify-between gap-4 pb-8 mb-10 border-b border-[#E2E9E1]">
               <div className="flex items-center gap-3">
@@ -192,17 +212,31 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <Link
                     key={related.slug}
                     href={`/blog/${related.slug}`}
-                    className="p-6 rounded-3xl bg-white border border-[#E2E9E1] hover:border-primary/40 transition-all hover:shadow-md group block"
+                    className="rounded-3xl bg-white border border-[#E2E9E1] hover:border-primary/40 transition-all hover:shadow-md group block overflow-hidden"
                   >
-                    <span className="text-xs font-bold text-[#176B60] mb-2 block uppercase tracking-wider">
-                      {related.category}
-                    </span>
-                    <h4 className="font-heading font-bold text-base text-[#233B36] group-hover:text-primary transition-colors line-clamp-2 mb-2">
-                      {related.title}
-                    </h4>
-                    <p className="text-[#38524C] text-xs line-clamp-2 font-medium">
-                      {related.excerpt}
-                    </p>
+                    <div className="relative h-44 overflow-hidden">
+                      <Image
+                        src={related.image}
+                        alt={related.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 400px"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#132622]/70 via-transparent to-transparent" />
+                      <div className="absolute top-3 left-3">
+                        <span className="text-xs font-bold px-3 py-0.5 rounded-full bg-white/95 text-[#176B60] shadow-xs">
+                          {related.category}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h4 className="font-heading font-bold text-base text-[#233B36] group-hover:text-primary transition-colors line-clamp-2 mb-2">
+                        {related.title}
+                      </h4>
+                      <p className="text-[#38524C] text-xs line-clamp-2 font-medium">
+                        {related.excerpt}
+                      </p>
+                    </div>
                   </Link>
                 ))}
               </div>
