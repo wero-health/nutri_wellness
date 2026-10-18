@@ -35,8 +35,8 @@ export function FAQAccordion({ items, faqs, className }: FAQAccordionProps) {
             className={cn(
               "rounded-2xl border transition-all duration-200 overflow-hidden",
               isOpen
-                ? "border-primary/20 bg-secondary/30 shadow-xs"
-                : "border-border bg-white hover:border-primary/20"
+                ? "border-[#176B60]/30 bg-[#EFF6F0] shadow-xs"
+                : "border-[#E2E9E1] bg-white hover:border-[#176B60]/30"
             )}
           >
             <button
@@ -46,7 +46,10 @@ export function FAQAccordion({ items, faqs, className }: FAQAccordionProps) {
               id={`faq-${index}`}
               aria-expanded={isOpen}
             >
-              <span className="font-heading font-semibold text-heading text-base pr-4">
+              <span className={cn(
+                "font-heading font-semibold text-base pr-4 transition-colors",
+                isOpen ? "text-[#176B60]" : "text-[#233B36]"
+              )}>
                 {faq.question}
               </span>
               <motion.div
@@ -54,7 +57,10 @@ export function FAQAccordion({ items, faqs, className }: FAQAccordionProps) {
                 transition={{ duration: 0.2 }}
                 className="shrink-0"
               >
-                <ChevronDown className="w-5 h-5 text-primary" />
+                <ChevronDown className={cn(
+                  "w-5 h-5 transition-colors",
+                  isOpen ? "text-[#176B60]" : "text-[#57756E]"
+                )} />
               </motion.div>
             </button>
 
@@ -66,7 +72,7 @@ export function FAQAccordion({ items, faqs, className }: FAQAccordionProps) {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="px-6 pb-5 pt-0 text-body text-sm leading-relaxed border-t border-primary/10">
+                  <div className="px-6 pb-5 pt-0 text-[#38524C] text-sm leading-relaxed border-t border-[#176B60]/10">
                     <p className="pt-3">{faq.answer}</p>
                   </div>
                 </motion.div>
